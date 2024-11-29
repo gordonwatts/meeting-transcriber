@@ -3,22 +3,25 @@ from typing import Generator
 from pydub import AudioSegment
 
 
-def chunk_audio_file(audio_file: Path) -> Generator[AudioSegment, None, None]:
+def chunk_audio_file(
+    audio_file: Path, chunk_duration_minutes: int = 20
+) -> Generator[AudioSegment, None, None]:
     """
-    Generator function that chunks an audio file into 20 MB sections.
+    Generator function that chunks an audio file into sections of specified minutes.
 
     :param audio_file: Path to the audio file.
-    :return: Generator yielding AudioSegment objects of 20 MB each.
+    :param chunk_duration_minutes: Duration of each chunk in minutes. Default is 20 minutes.
+    :return: Generator yielding AudioSegment objects of the specified duration.
     """
     audio = AudioSegment.from_file(audio_file)
-    chunk_size_bytes = 20 * 1024 * 1024  # 20 MB in bytes
-    total_size_bytes = len(audio.raw_data)
+    chunk_duration_ms = (
+        chunk_duration_minutes * 60 * 1000
+    )  # Convert minutes to milliseconds
     duration_ms = len(audio)  # Duration of the audio in milliseconds
-    chunk_size_ms = (chunk_size_bytes / total_size_bytes) * duration_ms
 
     start = 0
 
     while start < duration_ms:
-        end = start + chunk_size_ms
+        end = start + chunk_duration_ms
         yield audio[start:end]
         start = end
