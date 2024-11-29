@@ -16,7 +16,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-dependencies = ["whisper>=1.0", "typer>=0.3.2"]
+dependencies = ["whisper>=1.0", "typer>=0.3.2", "pydub"]
 
 [project.optional-dependencies]
 test = ["pytest", "black", "flake8"]
