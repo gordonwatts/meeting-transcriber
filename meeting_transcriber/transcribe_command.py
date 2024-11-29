@@ -1,7 +1,7 @@
 import typer
 from pathlib import Path
 
-from src.audio_transcribe import transcribe_to_text_file
+from meeting_transcriber.audio_transcribe import transcribe_to_text_file
 
 app = typer.Typer()
 
