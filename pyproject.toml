@@ -16,7 +16,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-dependencies = ["whisper>=1.0"]
+dependencies = ["whisper>=1.0", "typer>=0.3.2"]
 
 [project.optional-dependencies]
 test = ["pytest", "black", "flake8"]
@@ -26,6 +26,9 @@ Homepage = "https://github.com/gwatts/meeting-transcriber"
 Documentation = "https://github.com/gwatts/meeting-transcriber/docs"
 Source = "https://github.com/gwatts/meeting-transcriber"
 Tracker = "https://github.com/gwatts/meeting-transcriber/issues"
+
+[project.scripts]
+transcribe = "src.transcribe_command:app"
 
 [tool.hatch.version]
 path = "meeting_transcriber/__init__.py"
