@@ -34,7 +34,11 @@ def transcribe_to_text_file(
             chunk.export(tmp_file.name, format="mp3")
             with open(tmp_file.name, "rb") as audio:
                 response = client.audio.transcriptions.create(
-                    model="whisper-1", file=audio, response_format="text"
+                    model="whisper-1",
+                    file=audio,
+                    response_format="text",
+                    prompt="This is a meeting in the ATLAS experiment. Some common Acronyms "
+                    "are ATLAS, CERN, LHC, AMG, OTP.",
                 )
                 transcription += response + " "
 
