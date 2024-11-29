@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "chunker",
+        "diskcache",
         "pydub",
         "typer"
     ]

@@ -4,23 +4,30 @@ from .audio_chunker import chunk_audio_file
 from .util import load_openai_api_key
 import tempfile
 from openai import OpenAI
+import diskcache as dc
+
+cache = dc.Cache("/tmp/transcription_cache")
 
 
+@cache.memoize()
 def transcribe_to_text_file(
-    audio_file: Path, output: Path, num_chunks: Optional[int] = None
-):
+    audio_file: Path, num_chunks: Optional[int] = None, chunk_length: int = 20
+) -> str:
     """Given an audio file, use a model to transcribe it.
 
     Args:
         audio_file (Path): The audio file to transcribe.
-        output (Path): The output file to write the transcription to.
         num_chunks (int, optional): The number of chunks to process. If None, process all chunks.
+        chunk_length (int, optional): The length of each chunk in minutes. Defaults to 20 minutes.
+
+    Returns:
+        str: The transcribed text.
     """
     transcription = ""
     load_openai_api_key()
     client = OpenAI()
 
-    for i, chunk in enumerate(chunk_audio_file(audio_file, 1)):
+    for i, chunk in enumerate(chunk_audio_file(audio_file, chunk_length)):
         if num_chunks is not None and i >= num_chunks:
             break
         with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp_file:
@@ -29,7 +36,6 @@ def transcribe_to_text_file(
                 response = client.audio.transcriptions.create(
                     model="whisper-1", file=audio, response_format="text"
                 )
-                transcription += response + "\n"
+                transcription += response + " "
 
-    with open(output, "w") as f:
-        f.write(transcription.strip())
+    return transcription.strip()
