@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Transcriber</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Meeting Transcriber</h1>
+        <div id="drop-area">
+            <p>Drag & Drop Audio File Here</p>
+            <input type="file" id="fileElem" accept="audio/*" onchange="handleFiles(this.files)">
+            <label class="button" for="fileElem">Choose File</label>
+        </div>
+        <button id="transcribeButton" onclick="transcribeAudio()">Transcribe</button>
+        <textarea id="transcriptionResult" placeholder="Transcription will appear here..." readonly></textarea>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

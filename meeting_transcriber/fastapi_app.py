@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from meeting_transcriber.transcription_utils import transcribe_and_clean_audio
 import uvicorn
@@ -7,8 +8,11 @@ import os
 
 app = FastAPI()
 
+# Serve static files
+app.mount("/", StaticFiles(directory="web", html=True), name="static")
 
-@app.post("/transcribe/")
+
+@app.post("/transcribe")
 async def transcribe_audio(file: UploadFile = File(...)):
     """
     Transcribe and summarize the provided audio file.
