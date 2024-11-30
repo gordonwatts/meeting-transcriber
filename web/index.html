@@ -17,6 +17,9 @@
             <label class="button" for="fileElem">Choose File</label>
         </div>
         <button id="transcribeButton" onclick="transcribeAudio()">Transcribe</button>
+        <div style="position: relative; display: inline-block; width: 100%;">
+            <button id="copyButton" onclick="copyToClipboard()" disabled style="position: absolute; right: 10px; top: -30px;">Copy</button>
+        </div>
         <textarea id="transcriptionResult" placeholder="Transcription will appear here..." readonly></textarea>
     </div>
     <script src="app.js"></script>

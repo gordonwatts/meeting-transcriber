@@ -78,6 +78,20 @@ body {
     cursor: not-allowed;
 }
 
+#copyButton {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#copyButton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
 #transcriptionResult {
     width: calc(100% - 10px);
     /* Adjust width to account for padding */

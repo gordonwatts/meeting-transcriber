@@ -33,6 +33,7 @@ async function transcribeAudio() {
 
     const transcribeButton = document.getElementById('transcribeButton');
     const dropArea = document.getElementById('drop-area');
+    const copyButton = document.getElementById('copyButton');
     transcribeButton.disabled = true;
     dropArea.classList.add('disabled');
 
@@ -51,10 +52,18 @@ async function transcribeAudio() {
 
         const result = await response.json();
         document.getElementById('transcriptionResult').textContent = result.transcription;
+        copyButton.disabled = false; // Enable the copy button
     } catch (error) {
         alert(error.message);
     } finally {
         transcribeButton.disabled = false;
         dropArea.classList.remove('disabled');
     }
+}
+
+function copyToClipboard() {
+    const transcriptionResult = document.getElementById('transcriptionResult');
+    transcriptionResult.select();
+    document.execCommand('copy');
+    alert('Transcription copied to clipboard.');
 }
