@@ -30,7 +30,7 @@ def transcribe_to_text_file(
     for i, chunk in enumerate(chunk_audio_file(audio_file, chunk_length)):
         if num_chunks is not None and i >= num_chunks:
             break
-        with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp_file:
+        with tempfile.NamedTemporaryFile(suffix=".mp3", delete=True) as tmp_file:
             chunk.export(tmp_file.name, format="mp3")
             with open(tmp_file.name, "rb") as audio:
                 response = client.audio.transcriptions.create(
