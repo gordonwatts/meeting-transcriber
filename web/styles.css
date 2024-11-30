@@ -33,6 +33,8 @@ body {
     /* Ensure padding is included in the width */
     margin: 0 auto;
     /* Center the drag-and-drop area */
+    height: 100px;
+    /* Fixed height for the drag-and-drop area */
 }
 
 #drop-area.disabled {
@@ -79,7 +81,8 @@ body {
 #transcriptionResult {
     width: calc(100% - 10px);
     /* Adjust width to account for padding */
-    height: 200px;
+    height: calc(100vh - 300px);
+    /* Adjust height to expand/shrink with the window */
     margin-top: 20px;
     padding: 10px;
     /* Increased padding */
