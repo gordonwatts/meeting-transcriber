@@ -13,7 +13,7 @@ def transcribe(audio_file: Path, output: Path = Path("./transcription.txt")):
     """
     Transcribe an audio file to text and write it to the output.
     """
-    text = transcribe_and_clean_audio(audio_file, output)
+    text = transcribe_and_clean_audio(audio_file)
     output.write_text(text, encoding="utf-8")
 
 
