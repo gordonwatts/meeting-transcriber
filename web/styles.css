@@ -14,13 +14,25 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1600px;
+    /* Increase max-width to double the current size */
+    width: 100%;
+    margin: 0 20px;
+    /* Add margin to ensure it doesn't touch the edges */
 }
 
 #drop-area {
     border: 2px dashed #ccc;
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px;
+    /* Reduced padding */
     margin-bottom: 20px;
+    width: calc(100% - 40px);
+    /* Make the drag-and-drop area more narrow by 40 pixels */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+    margin: 0 auto;
+    /* Center the drag-and-drop area */
 }
 
 #drop-area.disabled {
@@ -65,13 +77,17 @@ body {
 }
 
 #transcriptionResult {
-    width: 100%;
+    width: calc(100% - 10px);
+    /* Adjust width to account for padding */
     height: 200px;
     margin-top: 20px;
     padding: 10px;
+    /* Increased padding */
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: none;
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
 }
 
 #fileElem {
