@@ -35,7 +35,7 @@ async function transcribeAudio() {
     formData.append('file', selectedFile);
 
     try {
-        const response = await fetch('/transcribe', { // Removed trailing slash
+        const response = await fetch('/api/transcribe', { // Updated endpoint
             method: 'POST',
             body: formData
         });

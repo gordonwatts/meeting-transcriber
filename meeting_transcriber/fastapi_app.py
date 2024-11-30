@@ -8,11 +8,8 @@ import os
 
 app = FastAPI()
 
-# Serve static files
-app.mount("/", StaticFiles(directory="web", html=True), name="static")
 
-
-@app.post("/transcribe")
+@app.post("/api/transcribe")
 async def transcribe_audio(file: UploadFile = File(...)):
     """
     Transcribe and summarize the provided audio file.
@@ -49,6 +46,10 @@ async def transcribe_audio(file: UploadFile = File(...)):
         # Ensure the temporary file is deleted
         if hashed_temp_file.exists():
             os.remove(hashed_temp_file)
+
+
+# Serve static files
+app.mount("/", StaticFiles(directory="web", html=True), name="web")
 
 
 def main():
