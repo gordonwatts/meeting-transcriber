@@ -31,11 +31,16 @@ async function transcribeAudio() {
         return;
     }
 
+    const transcribeButton = document.getElementById('transcribeButton');
+    const dropArea = document.getElementById('drop-area');
+    transcribeButton.disabled = true;
+    dropArea.classList.add('disabled');
+
     const formData = new FormData();
     formData.append('file', selectedFile);
 
     try {
-        const response = await fetch('/api/transcribe', { // Updated endpoint
+        const response = await fetch('/api/transcribe', {
             method: 'POST',
             body: formData
         });
@@ -48,5 +53,8 @@ async function transcribeAudio() {
         document.getElementById('transcriptionResult').textContent = result.transcription;
     } catch (error) {
         alert(error.message);
+    } finally {
+        transcribeButton.disabled = false;
+        dropArea.classList.remove('disabled');
     }
 }
