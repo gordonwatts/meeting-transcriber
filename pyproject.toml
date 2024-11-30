@@ -16,7 +16,16 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-dependencies = ["whisper>=1.0", "typer>=0.3.2", "pydub", "openai", "diskcache"]
+dependencies = [
+    "whisper>=1.0",
+    "typer>=0.3.2",
+    "pydub",
+    "openai",
+    "diskcache",
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+]
 
 [project.optional-dependencies]
 test = ["pytest", "black", "flake8"]
@@ -29,6 +38,7 @@ Tracker = "https://github.com/gwatts/meeting-transcriber/issues"
 
 [project.scripts]
 transcribe = "meeting_transcriber.transcribe_command:app"
+transcribe_app = "meeting_transcriber.fastapi_app:main"
 
 [tool.hatch.version]
 path = "meeting_transcriber/__init__.py"
