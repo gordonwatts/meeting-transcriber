@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#app {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1600px;
+    /* Increase max-width to double the current size */
+    width: 100%;
+    margin: 0 20px;
+    /* Add margin to ensure it doesn't touch the edges */
+}
+
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    /* Reduced padding */
+    margin-bottom: 20px;
+    width: calc(100% - 40px);
+    /* Make the drag-and-drop area more narrow by 40 pixels */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+    margin: 0 auto;
+    /* Center the drag-and-drop area */
+    height: 100px;
+    /* Fixed height for the drag-and-drop area */
+}
+
+#drop-area.disabled {
+    background-color: #e9ecef;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+#drop-area.highlight {
+    border: 2px solid #007bff;
+}
+
+#drop-area p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+#transcribeButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#transcribeButton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+#copyButton {
+    padding: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px; /* Smaller font size */
+}
+
+#copyButton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+#transcriptionResult {
+    width: calc(100% - 10px);
+    /* Adjust width to account for padding */
+    height: calc(100vh - 300px);
+    /* Adjust height to expand/shrink with the window */
+    margin-top: 20px;
+    padding: 10px;
+    /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+}
+
+#fileElem {
+    display: none;
+}

@@ -8,6 +8,12 @@ Experimental project to process audio files from meetings and generate transcrip
 
 Result will be in transcription.txt.
 
+To start a webapi (and PWA) running on port 8001:
+
+`transcribe_app --port 8001`
+
+And then open your browser at 8001 to see the interface. You can also get the docs by looking at the localhost link for docs, <http://localhost:8001/docs>.
+
 ## Goals
 
 This is experimental and has several goals:
