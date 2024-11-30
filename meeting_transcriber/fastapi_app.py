@@ -5,8 +5,10 @@ from meeting_transcriber.transcription_utils import transcribe_and_clean_audio
 import uvicorn
 import hashlib
 import os
+import typer
 
 app = FastAPI()
+cli = typer.Typer()
 
 
 @app.post("/api/transcribe")
@@ -52,5 +54,16 @@ async def transcribe_audio(file: UploadFile = File(...)):
 app.mount("/", StaticFiles(directory="web", html=True), name="web")
 
 
-def main():
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+@cli.command()
+def main(port: int = 8000):
+    """
+    Run the FastAPI app.
+
+    Args:
+        port (int): The port number to run the app on.
+    """
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
+
+if __name__ == "__main__":
+    cli()
