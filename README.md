@@ -28,4 +28,8 @@ This is experimental and has several goals:
 
 ## Installation
 
-Use `pip install -e .[test]`
+I've only tested this on WSL on windows.
+
+1. Make sure ffmpeg is installed (required for audio editing and loading and transcription):
+  `apt-get install ffmpeg libavcodec-extra`
+1. Use `pip install -e .[test]`
